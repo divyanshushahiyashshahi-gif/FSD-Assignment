@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABES Engineering College</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+
+    .top-header {
+        background-color: rgb(133, 28, 133);
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        padding: 10px 20px;
+        gap: 20px;
+    }
+
+    .college-name {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .search-box input {
+        padding: 6px;
+    }
+
+    .search-box button {
+        padding: 6px 10px;
+        cursor: pointer;
+    }
+
+    /* ===== MAIN NAVBAR ===== */
+    .main-nav {
+        background-color: silver;
+    }
+
+    .main-nav ul {
+        list-style: none;
+        display: grid;
+        grid-auto-flow: column;
+        gap: 20px;
+        padding: 10px 20px;
+    }
+
+    .main-nav a {
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+    }
+
+    /* ===== CONTENT GRID ===== */
+    .layout {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        background-color: rgb(9, 82, 106);
+        padding: 20px;
+    }
+
+    .sidebar ul {
+        list-style: none;
+    }
+
+    .sidebar li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: black;
+    }
+
+    /* Main Content */
+    .content {
+        padding: 20px;
+    }
+
+    .card {
+        border: 1px solid #726c6c;
+        padding: 15px;
+        margin-top: 20px;
+        border-radius: 5px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+        .layout {
+            grid-template-columns: 1fr;
+        }
+
+        .main-nav ul {
+            grid-auto-flow: row;
+        }
+
+        .top-header {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="top-header">
+    <img src="data:image/jpeg;base64,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" alt="Logo" width="60" height="60">
+    <div class="college-name">ABES Engineering College</div>
+    <div class="search-box">
+        <input type="search" placeholder="Search">
+        <button>Search</button>
+    </div>
+</div>
+
+<!-- MAIN NAVBAR -->
+<nav class="main-nav">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- CONTENT AREA -->
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h3>Menu</h3>
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Students</a></li>
+            <li><a href="#">Faculty</a></li>
+            <li><a href="#">Departments</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+        <h2>Welcome to ABES Engineering College</h2>
+        <p>
+            This is a fully responsive layout using CSS Grid.
+            Resize the screen to see the responsive behavior.
+        </p>
+
+        <div class="card">
+            <h4>Notice Board</h4>
+            <p>
+                Add announcements, updates, or important information here.
+            </p>
+        </div>
+    </main>
+
+</div>
+
+</body>
+</html>
